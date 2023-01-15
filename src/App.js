@@ -1,5 +1,6 @@
 import BoardPage from './BoardPage.js';
 import Post from './Post.js';
+import { init } from './router.js';
 import Upload from './Upload.js';
 
 export default function App({ $target }) {
@@ -18,5 +19,10 @@ export default function App({ $target }) {
     }
   };
 
+  init(this.route);
   this.route();
+
+  window.addEventListener('popstate', () => {
+    this.route();
+  });
 }
