@@ -17,7 +17,7 @@ export default function BoardPage({ $target }) {
   const selectPosts = async () => {
     const posts = await dummy('/');
     this.setState(posts);
-    new Header({ $target: $page, type: 'detail' });
+    new Header({ $target: $page, type: 'main' });
     $page.innerHTML += `<div class="btn_wrap">
       <a href="/upload">
         <span class="btn_icon"></span>

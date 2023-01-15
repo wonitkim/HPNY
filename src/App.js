@@ -1,7 +1,7 @@
 import BoardPage from './BoardPage.js';
 import Post from './Post.js';
 import { init } from './router.js';
-import Upload from './Upload.js';
+import UploadPage from './UploadPage.js';
 
 export default function App({ $target }) {
   this.route = () => {
@@ -11,7 +11,7 @@ export default function App({ $target }) {
     if (pathname === '/') {
       new BoardPage({ $target }).render();
     } else if (pathname === '/upload') {
-      new Upload({ $target }).render();
+      new UploadPage({ $target }).render();
     } else if (pathname.indexOf('/post/') !== -1) {
       //게시글 구분을 위한 id 추출
       const [, , p_id] = pathname.split('/');
