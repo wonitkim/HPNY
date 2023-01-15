@@ -1,0 +1,20 @@
+@charset "utf-8";
+body,header,footer,section,article,aside,nav,address,h1,h2,h3,h4,h5,h6,p,div,blockquote,ol,ul,li,dl,dt,dd,form,fieldset,legend,input,button,textarea,select,option,figure,figcaption,table,tbody,tr,td,th,thead,tfoot,caption{ margin:0px; padding:0px; }
+h1,h2,h3,h4,h5,h6 {font-weight:normal;}
+a{text-decoration:none; -webkit-tap-highlight-color:transparent;}
+img{ display:block; border:0px; margin:0px;  padding:0px; }
+ol,ul{ list-style:none; }
+em,address{ font-style:normal; }
+fieldset{  border:0px;  }
+legend,caption{ display:none; }
+table{ border-collapse:collapse; border-spacing:0px; }
+textarea{ resize:none; }
+q::before,q::after{  content:"";  }
+strong{ font-weight:normal; }
+button{ border:0px; }
+body{ letter-spacing: -0.03em; font-family:"Pretendard-Regular","맑은고딕";-webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
+/* 스크롤바 숨기기 */
+body::-webkit-scrollbar { display: none; width:0; }
+body{/* IE scroll 숨김 */  -ms-overflow-style: none;}
+input:is([type="button"], [type="submit"], [type="reset"], [type="date"]) { /* safari input ui */ appearance:unset; -webkit-appearance: unset; }
+input[type="date" i]{ -webkit-appearance: unset; }
