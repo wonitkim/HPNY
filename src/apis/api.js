@@ -1,8 +1,10 @@
-const END_POINT = 'http://43.201.103.199/';
+const server_ep = 'http://43.201.103.199/';
+const unsplash_ep = 'https://api.unsplash.com/';
+const access_key = 'ZsBkiHe68NghEEyB8pQjZlViP5-sW-2Lb2DNSDAqbMI';
 
-export const request = async (url, option = {}) => {
+const request = async (end_point, url, option = {}) => {
   try {
-    const fetch_url = `${END_POINT}${url}`;
+    const fetch_url = `${end_point}${url}`;
     const res = await fetch(fetch_url, option);
 
     if (res.ok) {
@@ -15,6 +17,9 @@ export const request = async (url, option = {}) => {
     console.error(e);
   }
 };
+
+export const getPostList = async () => await request(server_ep, '/');
+export const getRandomImg = async () => await request(unsplash_ep, `photos/random?client_id=${access_key}`);
 
 export const dummy = async (url, option = {}) => {
   await new Promise((res) => setTimeout(res, 500));
