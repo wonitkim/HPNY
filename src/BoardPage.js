@@ -4,23 +4,27 @@ import PostList from './PostList.js';
 
 export default function BoardPage({ $target }) {
   const $page = document.createElement('section');
-  $target.appendChild($page);
   $page.id = 'board_page';
+
+  this.render = () => {
+    $target.appendChild($page);
+  };
 
   this.setState = (new_state) => {
     this.state = new_state;
-    this.render();
   };
 
   const selectPosts = async () => {
     const posts = await dummy('/');
     this.setState(posts);
+    new Header({ $target: $page, type: 'detail' });
+    $page.innerHTML += `<div class="btn_wrap">
+      <a href="/upload">
+        <span class="btn_icon"></span>
+        <span class="btn_title">새 글 작성하기</span>
+      </a>
+    </div>`;
+    new PostList({ $target: $page, init: this.state });
   };
-
   selectPosts();
-
-  this.render = () => {
-    new Header({ $target: $page, type: 'detail' }).render();
-    new PostList({ $target: $page, init: this.state }).render();
-  };
 }
