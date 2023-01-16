@@ -1,5 +1,5 @@
 import BoardPage from './BoardPage.js';
-import Post from './Post.js';
+import PostDetailPage from './PostDetailPage.js';
 import { init } from './router.js';
 import UploadPage from './UploadPage.js';
 
@@ -15,7 +15,7 @@ export default function App({ $target }) {
     } else if (pathname.indexOf('/post/') !== -1) {
       //게시글 구분을 위한 id 추출
       const [, , p_id] = pathname.split('/');
-      new Post({ $target, p_id }).render();
+      new PostDetailPage({ $target, p_id }).render();
     }
   };
 
