@@ -1,4 +1,4 @@
-import { dummy } from './apis/api.js';
+import { getPostList } from './apis/api.js';
 import Header from './Header.js';
 import PostList from './PostList.js';
 
@@ -15,8 +15,8 @@ export default function BoardPage({ $target }) {
   };
 
   const selectPosts = async () => {
-    const posts = await dummy('/');
-    this.setState(posts);
+    const posts = await getPostList('/');
+    this.setState(posts.data.posts);
     new Header({ $target: $page, type: 'main' });
     $page.innerHTML += `<div class="btn_wrap">
       <a href="/upload">
