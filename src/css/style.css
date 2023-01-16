@@ -161,8 +161,8 @@ header #back_btn {
 
 #upload_page .btn_wrap {
   width: 100%;
-  position: fixed;
-  bottom: 0;
+  /* position: fixed;
+  bottom: 0; */
   padding: 16px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;

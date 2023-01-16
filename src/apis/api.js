@@ -18,7 +18,8 @@ const request = async (end_point, url, option = {}) => {
   }
 };
 
-export const getPostList = async () => await request(server_ep, '/');
+export const getUploadPost = async (option) => await request(server_ep, 'post', option);
+export const getPostList = async () => await request(server_ep, 'posts');
 export const getRandomImg = async () => await request(unsplash_ep, `photos/random?client_id=${access_key}`);
 
 export const dummy = async (url, option = {}) => {
