@@ -5,11 +5,6 @@ export default function PostList({ $target, init }) {
 
   this.state = init;
 
-  // this.setState = (new_state) => {
-  //   this.state = new_state;
-  //   this.render();
-  // };
-
   this.render = () => {
     if (!this.state) {
       console.log('no_state');

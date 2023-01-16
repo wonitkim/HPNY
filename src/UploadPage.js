@@ -1,8 +1,8 @@
-import { getRandomImg, getUploadPost } from './apis/api.js';
+import { getUnsplash, getUploadPost } from './apis/api.js';
 import Header from './Header.js';
 import { routeChange } from './router.js';
 
-export default function Upload({ $target }) {
+export default function UploadPage({ $target }) {
   const $page = document.createElement('section');
   $page.id = 'upload_page';
 
@@ -12,37 +12,57 @@ export default function Upload({ $target }) {
   };
 
   $page.addEventListener('click', async (e) => {
-    if (e.target.id === 'img_upload_btn') {
-      const data = await getRandomImg();
+    if (e.target.id == 'img_upload_btn' && !e.target.classList.contains('done')) {
+      const data = await getUnsplash();
       this.setState({ name: 'image', value: data.urls.regular });
+      let img_btn = document.querySelector('#img_upload_btn');
+      img_btn.innerHTML = ``;
+      img_btn.style.backgroundImage = `url('${this.state.image}')`;
+      img_btn.style.backgroundSize = 'cover';
+      img_btn.style.backgroundPostion = 'center';
+      img_btn.classList.add('done');
+      await checkField();
     }
 
-    if (e.target.id === 'upload_btn') {
-      this.setState({ name: 'title', value: document.querySelector('#post_title').value });
-      this.setState({ name: 'content', value: document.querySelector('#post_content').value });
-      let check = checkField();
-      if (check.result) {
-        let option = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(this.state),
-        };
-        let result = await getUploadPost(option);
+    if (e.target.id === 'upload_btn' && e.target.classList.contains('active')) {
+      let option = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.state),
+      };
+      let result = await getUploadPost(option);
+      if (result) {
         if (result.code === 201) {
           routeChange('/');
         } else {
+          alert(result.msg);
+          return;
         }
       } else {
-        return alert(check.msg);
+        alert('게시물을 등록하지 못했습니다. \n 다시 시도해주세요.');
+        return;
       }
     }
   });
 
-  const checkField = () => {
-    if (this.state.img === '') return { result: false, msg: '랜덤 이미지를 선택해주세요.' };
-    else if (this.state.title === '') return { result: false, msg: '제목을 입력해주세요.' };
-    else if (this.state.content === '') return { result: false, msg: '내용을 입력해주세요.' };
-    return { result: true };
+  $page.addEventListener('keyup', async (e) => {
+    if (e.target.id === 'post_title') {
+      this.setState({ name: 'title', value: document.querySelector('#post_title').value });
+    } else if (e.target.id === 'post_content') {
+      this.setState({ name: 'content', value: document.querySelector('#post_content').value });
+    }
+    await checkField();
+  });
+
+  const checkField = async () => {
+    let btn = document.querySelector('#upload_btn');
+    if (this.state.img !== '' && this.state.title !== '' && this.state.content !== '') {
+      btn.classList.add('active');
+      return;
+    } else {
+      btn.classList.remove('active');
+      return;
+    }
   };
 
   this.render = () => {

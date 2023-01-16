@@ -1,6 +1,6 @@
 const server_ep = 'http://43.201.103.199/';
 const unsplash_ep = 'https://api.unsplash.com/';
-const access_key = 'ZsBkiHe68NghEEyB8pQjZlViP5-sW-2Lb2DNSDAqbMI';
+const access_key = 'WBvytNYCg9xdhnwwpKdomyNsEYU_xkxEUrWUalCD0LE';
 
 const request = async (end_point, url, option = {}) => {
   try {
@@ -11,7 +11,11 @@ const request = async (end_point, url, option = {}) => {
       const data = await res.json();
       return data;
     } else {
-      throw new Error('API 통신 실패');
+      if (url === 'post' && res.status === 400) {
+        return { code: 400, msg: '중복게시물은 작성할 수 없습니다.' };
+      } else {
+        throw new Error('API 통신 실패');
+      }
     }
   } catch (e) {
     console.error(e);
@@ -20,7 +24,7 @@ const request = async (end_point, url, option = {}) => {
 
 export const getUploadPost = async (option) => await request(server_ep, 'post', option);
 export const getPostList = async () => await request(server_ep, 'posts');
-export const getRandomImg = async () => await request(unsplash_ep, `photos/random?client_id=${access_key}`);
+export const getUnsplash = async () => await request(unsplash_ep, `photos/random?client_id=${access_key}`);
 
 export const dummy = async (url, option = {}) => {
   await new Promise((res) => setTimeout(res, 500));
