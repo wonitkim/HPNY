@@ -1,7 +1,6 @@
 import { getPostList } from './apis/api.js';
 import Header from './Header.js';
 import PostList from './PostList.js';
-import { routeChange } from './router.js';
 
 export default function BoardPage({ $target }) {
   const $page = document.createElement('section');
@@ -14,13 +13,6 @@ export default function BoardPage({ $target }) {
   this.setState = (new_state) => {
     this.state = new_state;
   };
-
-  $page.addEventListener('click', (e) => {
-    if (e.target.classList.contains('post_item')) {
-      let p_id = e.target.dataset.id;
-      routeChange(`/post/${p_id}`);
-    }
-  });
 
   const selectPosts = async () => {
     const { data } = await getPostList();
