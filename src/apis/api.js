@@ -25,7 +25,7 @@ const request = async (end_point, url, option = {}) => {
 export const getUploadPost = async (option) => await request(server_ep, 'post', option);
 export const getPostList = async () => await request(server_ep, 'posts');
 export const getPostDetail = async (id) => await request(server_ep, `post/${id}`);
-export const addComment = async (id) => await request(server_ep, `comment/${id}`);
+export const addComment = async (id, option) => await request(server_ep, `comment/${id}`, option);
 export const deleteComment = async (id, option) => await request(server_ep, `comment/${id}`, option);
 export const getUnsplash = async () => await request(unsplash_ep, `photos/random?client_id=${access_key}`);
 

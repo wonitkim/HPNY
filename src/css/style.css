@@ -384,6 +384,10 @@ header #back_btn {
   margin-left: 10px;
 }
 
+#post_detail_page #leave_comment_btn.active {
+  border: 2px solid #99ccff;
+}
+
 #post_detail_page #leave_comment_btn span {
   display: inline-block;
   width: 30px;

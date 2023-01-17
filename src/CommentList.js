@@ -8,14 +8,15 @@ export default function CommentList({ $target, p_id, init }) {
 
   this.setState = (new_state) => {
     this.state = new_state;
+    console.log(this.state);
     this.render();
   };
 
   $target.addEventListener('click', async (e) => {
     if (e.target.classList.contains('comment_delete_btn')) {
       let c_id = e.target.parentNode.dataset.id;
-      let { code } = await deleteComment(c_id, { method: 'DELETE' });
-      if (code === 200) {
+      let result = await deleteComment(c_id, { method: 'DELETE' });
+      if (result.code === 200) {
         let result = await getPostDetail(p_id);
         this.setState(result.data.comments);
       }
