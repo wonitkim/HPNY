@@ -390,4 +390,46 @@ header #back_btn {
   height: 30px;
   background: url(/img/mypage_matching_current.svg) no-repeat;
   background-size: contain;
+  pointer-events: none;
+}
+
+#post_detail_page .post_comment_wrap {
+  width: 100%;
+  padding: 15px 18px 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#post_detail_page .comment_list {
+  width: 100%;
+}
+
+#post_detail_page .comment_item {
+  width: 100%;
+  padding: 9px 12px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+#post_detail_page .comment_item .comment {
+  width: calc(100% - 30px - 10px);
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: 0em;
+}
+
+#post_detail_page .comment_item .comment_delete_btn {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  background: url(/img/round_close_grey.svg) no-repeat;
+  background-size: contain;
 }

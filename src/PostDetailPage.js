@@ -1,5 +1,7 @@
 import { getPostDetail } from './apis/api.js';
+import CommentList from './CommentList.js';
 import Header from './Header.js';
+
 export default function PostDetailPage({ $target, p_id }) {
   this.state = { p_id };
 
@@ -53,7 +55,7 @@ export default function PostDetailPage({ $target, p_id }) {
       </div>
     </div>
     `;
-    new Comment({ $target: $page.querySelector('post_comment_wrap') });
+    new CommentList({ $target: $page.querySelector('.post_comment_wrap'), p_id: p_id, init: this.state.comments });
   };
 
   selectPostDetail();
