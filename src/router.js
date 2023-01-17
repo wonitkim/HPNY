@@ -6,10 +6,15 @@ export const init = (onRouteChange) => {
   });
 };
 
-export const routeChange = (url, params) => {
+export const routeChange = (url, params, type = null) => {
   const { pathname } = location;
-  if (url !== pathname) {
-    history.pushState(null, '', url);
+  if (type === null) {
+    if (url !== pathname) {
+      history.pushState(null, '', url);
+      window.dispatchEvent(new CustomEvent(ROUTE_CHANGE_EVENT, params));
+    }
+  } else if (type === 're') {
+    history.replaceState(null, '', url);
     window.dispatchEvent(new CustomEvent(ROUTE_CHANGE_EVENT, params));
   }
 };

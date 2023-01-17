@@ -1,6 +1,7 @@
-import { addComment, getPostDetail } from './apis/api.js';
+import { addComment, deletePost, getPostDetail } from './apis/api.js';
 import CommentList from './CommentList.js';
 import Header from './Header.js';
+import { routeChange } from './router.js';
 
 export default function PostDetailPage({ $target, p_id }) {
   this.state = { p_id };
@@ -27,6 +28,12 @@ export default function PostDetailPage({ $target, p_id }) {
     if (e.target.id === 'leave_comment_btn' && e.target.classList.contains('active')) {
       let comment = e.target.previousElementSibling.value;
       await leaveComment(comment);
+    }
+
+    if (e.target.id === 'post_delete') {
+      let option = { method: 'DELETE' };
+      let result = await deletePost(p_id, option);
+      if (result.code === 200) routeChange('/', null, 're');
     }
   });
 
