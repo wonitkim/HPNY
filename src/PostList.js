@@ -21,12 +21,12 @@ export default function PostList({ $target, init }) {
 
     $post_list.innerHTML = `${this.state
       .map(
-        (post) =>
-          `<li class="post_item" data-id="${post.postId}">
-              <img class="post_img" src="${post.image}" alt="">
+        (val) =>
+          `<li class="post_item" data-id="${val.postId}">
+              <img class="post_img" src="${val.image}" alt="">
               <div class="post_item_inner">
-                <p class="title">${post.postId}</p>
-                <p class="content">${post.content}</p>
+                <p class="title">${val.title}</p>
+                <p class="content">${val.content}</p>
               </div>
           </li>`
       )
