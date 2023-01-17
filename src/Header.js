@@ -1,7 +1,19 @@
+import { routeChange } from './router.js';
+
 export default function Header({ $target, type }) {
   const $header = document.createElement('header');
   $target.appendChild($header);
   this.state = type;
+
+  $target.addEventListener('click', (e) => {
+    if (e.target.id === 'back_btn') {
+      history.back();
+    }
+
+    if (e.target.tagName === 'H1') {
+      routeChange('/');
+    }
+  });
 
   this.render = () => {
     if (!this.state) {
@@ -9,8 +21,13 @@ export default function Header({ $target, type }) {
       return;
     }
 
-    const header_element = { main: `<h1>HPNY</h1>`, detail: `<span id='back_btn'></span><h1>HPNY</h1>` };
-    $header.innerHTML = header_element[this.state];
+    if (this.state === 'main') {
+      $header.style.justifyContent = 'flex-end';
+      $header.innerHTML = `<h1>HPNY</h1>`;
+    } else if (this.state === 'detail') {
+      $header.style.justifyContent = 'space-between';
+      $header.innerHTML = `<span id='back_btn'></span><h1>HPNY</h1>`;
+    }
   };
 
   this.render();
