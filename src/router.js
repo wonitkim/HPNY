@@ -7,6 +7,9 @@ export const init = (onRouteChange) => {
 };
 
 export const routeChange = (url, params) => {
-  history.pushState(null, '', url);
-  window.dispatchEvent(new CustomEvent(ROUTE_CHANGE_EVENT, params));
+  const { pathname } = location;
+  if (url !== pathname) {
+    history.pushState(null, '', url);
+    window.dispatchEvent(new CustomEvent(ROUTE_CHANGE_EVENT, params));
+  }
 };
