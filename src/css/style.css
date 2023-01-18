@@ -1,4 +1,4 @@
-@import './reset.css';
+@import "./reset.css";
 
 #App {
   width: 100vw;
@@ -160,7 +160,8 @@ header #back_btn {
   display: none;
 }
 
-#upload_page .btn_wrap {
+#upload_page .btn_wrap,
+#edit_page .btn_wrap {
   width: 100%;
   padding: 16px;
   box-sizing: border-box;
@@ -169,7 +170,8 @@ header #back_btn {
   background: #fff;
 }
 
-#upload_page #upload_btn {
+#upload_page #upload_btn,
+#edit_page #edit_btn {
   width: 100%;
   text-align: center;
   padding: 20px 0;
@@ -186,15 +188,16 @@ header #back_btn {
   border-radius: 12px;
 }
 
-#upload_page #upload_btn.active {
+#upload_page #upload_btn.active,
+#edit_page #edit_btn.active {
   background: #99ccff;
 }
 
-#upload_page .input_wrap {
+.input_wrap {
   margin-top: 28px;
 }
 
-#upload_page .input_label {
+.input_label {
   display: block;
   font-family: Roboto;
   font-size: 24px;
@@ -206,7 +209,7 @@ header #back_btn {
   margin-bottom: 16px;
 }
 
-#upload_page #post_title {
+#post_title {
   width: 100%;
   padding: 0 0 10px 0;
   box-sizing: border-box;
@@ -221,13 +224,13 @@ header #back_btn {
   color: #3d3b3b;
 }
 
-#upload_page #post_title:focus {
+#post_title:focus {
   outline: none;
   border: 2px solid #99ccff;
   border-width: 0 0 2px 0;
 }
 
-#upload_page #post_content {
+#post_content {
   width: 100%;
   height: 250px;
   border: 2px solid #e8e8e8;
@@ -243,7 +246,7 @@ header #back_btn {
   color: #3d3b3b;
 }
 
-#upload_page #post_content:focus {
+#post_content:focus {
   border-radius: 12px;
   outline-color: #99ccff;
 }
@@ -282,7 +285,8 @@ header #back_btn {
   color: #3d3b3b;
 }
 
-#post_detail_page .post_article img {
+#post_detail_page .post_article img,
+#edit_page .edit_inner img {
   width: 100%;
   height: 300px;
   object-fit: cover;
@@ -436,4 +440,22 @@ header #back_btn {
   margin-left: 10px;
   background: url(/img/round_close_grey.svg) no-repeat;
   background-size: contain;
+}
+
+#edit_page .input_wrap {
+  padding: 0 16px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#edit_page .edit_inner {
+  height: calc(100% - 83px - 98px);
+  overflow: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+#edit_page .edit_inner::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }

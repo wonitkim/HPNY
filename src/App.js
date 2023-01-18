@@ -1,28 +1,32 @@
-import BoardPage from './BoardPage.js';
-import PostDetailPage from './PostDetailPage.js';
-import { init } from './router.js';
-import UploadPage from './UploadPage.js';
+import BoardPage from "./BoardPage.js";
+import PostDetailPage from "./PostDetailPage.js";
+import { init } from "./router.js";
+import UploadPage from "./UploadPage.js";
+import EditPage from "./EditPage.js";
 
 export default function App({ $target }) {
   this.route = () => {
     const { pathname } = location;
     $target.innerHTML = ``;
 
-    if (pathname === '/') {
+    if (pathname === "/") {
       new BoardPage({ $target }).render();
-    } else if (pathname === '/upload') {
+    } else if (pathname === "/upload") {
       new UploadPage({ $target }).render();
-    } else if (pathname.indexOf('/post/') !== -1) {
+    } else if (pathname.indexOf("/post/") !== -1) {
       //게시글 구분을 위한 id 추출
-      const [, , p_id] = pathname.split('/');
+      const [, , p_id] = pathname.split("/");
       new PostDetailPage({ $target, p_id }).render();
+    } else if (pathname.indexOf("/edit/") !== -1) {
+      const [, , p_id] = pathname.split("/");
+      new EditPage({ $target, p_id }).render();
     }
   };
 
   init(this.route);
   this.route();
 
-  window.addEventListener('popstate', () => {
+  window.addEventListener("popstate", () => {
     this.route();
   });
 }
