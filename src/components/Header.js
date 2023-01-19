@@ -1,4 +1,4 @@
-import { routeChange } from "./router.js";
+import { routeChange } from "../router.js";
 
 export default function Header({ $target, type }) {
   const $header = document.createElement("header");

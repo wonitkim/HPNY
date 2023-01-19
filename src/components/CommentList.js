@@ -1,8 +1,8 @@
-import { deleteComment, getPostDetail } from './apis/api.js';
+import { deleteComment, getPostDetail } from "../apis/api.js";
 
 export default function CommentList({ $target, p_id, init }) {
-  const $comment_list = document.createElement('ul');
-  $comment_list.classList.add('comment_list');
+  const $comment_list = document.createElement("ul");
+  $comment_list.classList.add("comment_list");
   $target.appendChild($comment_list);
   this.state = init;
 
@@ -12,10 +12,10 @@ export default function CommentList({ $target, p_id, init }) {
     this.render();
   };
 
-  $target.addEventListener('click', async (e) => {
-    if (e.target.classList.contains('comment_delete_btn')) {
+  $target.addEventListener("click", async (e) => {
+    if (e.target.classList.contains("comment_delete_btn")) {
       let c_id = e.target.parentNode.dataset.id;
-      let result = await deleteComment(c_id, { method: 'DELETE' });
+      let result = await deleteComment(c_id, { method: "DELETE" });
       if (result.code === 200) {
         let result = await getPostDetail(p_id);
         this.setState(result.data.comments);
@@ -25,7 +25,7 @@ export default function CommentList({ $target, p_id, init }) {
 
   this.render = () => {
     if (!this.state) {
-      console.log('no_state');
+      console.log("no_state");
       return;
     }
     $comment_list.innerHTML = `${this.state
@@ -36,7 +36,7 @@ export default function CommentList({ $target, p_id, init }) {
               <span class="comment_delete_btn"></span>
             </li>`
       )
-      .join('')}`;
+      .join("")}`;
   };
 
   this.render();

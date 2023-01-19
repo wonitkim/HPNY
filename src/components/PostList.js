@@ -1,13 +1,13 @@
-import { routeChange } from './router.js';
+import { routeChange } from "../router.js";
 export default function PostList({ $target, init }) {
-  const $post_list = document.createElement('ul');
-  $post_list.classList.add('post_list');
+  const $post_list = document.createElement("ul");
+  $post_list.classList.add("post_list");
   $target.appendChild($post_list);
 
   this.state = init;
 
-  $target.addEventListener('click', (e) => {
-    if (e.target.classList.contains('post_item')) {
+  $target.addEventListener("click", (e) => {
+    if (e.target.classList.contains("post_item")) {
       let p_id = e.target.dataset.id;
       routeChange(`/post/${p_id}`);
     }
@@ -15,7 +15,7 @@ export default function PostList({ $target, init }) {
 
   this.render = () => {
     if (!this.state) {
-      console.log('no_state');
+      console.log("no_state");
       return;
     }
 
@@ -30,7 +30,7 @@ export default function PostList({ $target, init }) {
               </div>
           </li>`
       )
-      .join('')}`;
+      .join("")}`;
   };
 
   this.render();

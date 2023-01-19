@@ -1,6 +1,6 @@
-import { getUnsplash, getUploadPost } from "./apis/api.js";
-import Header from "./Header.js";
-import { routeChange } from "./router.js";
+import { getUnsplash, getUploadPost } from "../apis/api.js";
+import Header from "../components/Header.js";
+import { routeChange } from "../router.js";
 
 export default function UploadPage({ $target }) {
   const $page = document.createElement("section");

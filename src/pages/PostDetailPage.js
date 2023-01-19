@@ -1,7 +1,7 @@
-import { addComment, deletePost, getPostDetail } from "./apis/api.js";
-import CommentList from "./CommentList.js";
-import Header from "./Header.js";
-import { routeChange } from "./router.js";
+import { addComment, deletePost, getPostDetail } from "../apis/api.js";
+import CommentList from "../components/CommentList.js";
+import Header from "../components/Header.js";
+import { routeChange } from "../router.js";
 
 export default function PostDetailPage({ $target, p_id }) {
   const $page = document.createElement("section");

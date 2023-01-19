@@ -1,6 +1,6 @@
-import { getPostDetail, editPost } from "./apis/api.js";
-import Header from "./Header.js";
-import { routeChange } from "./router.js";
+import { getPostDetail, editPost } from "../apis/api.js";
+import Header from "../components/Header.js";
+import { routeChange } from "../router.js";
 
 export default function EditPage({ $target, p_id }) {
   const $page = document.createElement("section");

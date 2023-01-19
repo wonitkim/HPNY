@@ -1,8 +1,8 @@
-import BoardPage from "./BoardPage.js";
-import PostDetailPage from "./PostDetailPage.js";
+import BoardPage from "./pages/BoardPage.js";
+import PostDetailPage from "./pages/PostDetailPage.js";
 import { init } from "./router.js";
-import UploadPage from "./UploadPage.js";
-import EditPage from "./EditPage.js";
+import UploadPage from "./pages/UploadPage.js";
+import EditPage from "./pages/EditPage.js";
 
 export default function App({ $target }) {
   this.route = () => {
